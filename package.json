@@ -1,0 +1,28 @@
+{
+  "name": "yuanfei-util",
+  "version": "1.0.0",
+  "description": "Common method library of JS",
+  "main": "src/index.js",
+  "types": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yaunfei/yuanfei-util.git"
+  },
+  "keywords": [
+    "util"
+  ],
+  "author": "yuanfei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yaunfei/yuanfei-util/issues"
+  },
+  "homepage": "https://github.com/yaunfei/yuanfei-util#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "jest": "^27.4.3"
+  }
+}
