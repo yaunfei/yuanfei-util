@@ -1,18 +1,35 @@
 {
   "name": "yuanfei-util",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Common method library of JS",
-  "main": "src/index.js",
-  "types": "src/index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
   "scripts": {
-    "test": "jest"
+    "clean": "rm -rf lib",
+    "test": "jest",
+    "build": "rollup -c",
+    "prepublish": "npm run clean && npm run test && npm run build"
   },
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/yaunfei/yuanfei-util.git"
   },
   "keywords": [
-    "util"
+    "functions",
+    "util",
+    "js",
+    "javascript",
+    "node.js",
+    "node",
+    "nodejs",
+    "utils",
+    "utility",
+    "utilities",
+    "lib",
+    "library"
   ],
   "author": "yuanfei",
   "license": "MIT",
@@ -23,6 +40,9 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
-    "jest": "^27.4.3"
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "jest": "^27.4.3",
+    "rollup": "^2.60.2",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
