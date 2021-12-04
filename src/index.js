@@ -6,8 +6,8 @@
  * 使用：
  * formatterMoney()
  */
-export * from './amount';
-
+export * from "./amount";
+export * from "./base";
 
 /**
  * 2.指定默认导出
@@ -17,10 +17,12 @@ export * from './amount';
  * 使用:
  * Util.Amount.formatterMoney()
  */
-import * as Amount from './amount';
+import * as Amount from "./amount";
+import * as Base from "./base";
 export default {
   Amount,
-}
+  Base,
+};
 
 /**
  * 3.正常导出模块
@@ -30,7 +32,4 @@ export default {
  * 使用:
  * Amount.formatterMoney()
  */
-export {
-  Amount,
-}
-
+export { Amount, Base };
