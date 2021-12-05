@@ -1,7 +1,30 @@
-import { debounce, throttle } from "../src/base";
+import { debounce, throttle, deepCopy } from "../src/index";
+
+describe("深度拷贝", () => {
+  it("deepCopy", () => {
+    let obj = {
+      a: 1,
+      b: {
+        b1: 3,
+        b2: 4,
+      },
+    };
+    expect(deepCopy(obj)).toEqual(obj);
+  });
+
+  it("deepCopy1", () => {
+    let obj = {
+      a: 1,
+      b: {
+        b1: new Date('2021-12-05'),
+        b2: new RegExp(/^\d{3}$/),
+      },
+    };
+    expect(deepCopy(obj)).toEqual(obj);
+  });
+});
 
 describe("防抖和节流", () => {
-
   it("防抖Debounce", (done) => {
     const mockFn = jest.fn();
     // 封装一个防抖函数
@@ -42,5 +65,4 @@ describe("防抖和节流", () => {
       done();
     }, 50);
   });
-
 });

@@ -1,3 +1,5 @@
+import { Decimal } from "decimal.js";
+
 /**
  * 金额格式化 3位截取; 32000 => 3,200
  * @param {String | Number} money
@@ -187,27 +189,27 @@ export const chineseToNum = (money) => {
 
     // 处理每个单位对应的值
     for (let subItem of arr) {
-      let currValue = 0;
+      let currValue = new Decimal(0);
       let subArr = subItem.split("");
       if (subArr[1] === "拾") {
         // 处理拾位
-        currValue = dic[subArr[0]] * 10;
+        currValue = new Decimal(dic[subArr[0]]).mul(new Decimal(10));
       } else if (subArr[1] === "佰") {
         //处理佰位
-        currValue = dic[subArr[0]] * 100;
+        currValue = new Decimal(dic[subArr[0]]).mul(new Decimal(100));
       } else if (subArr[1] === "仟") {
         // 处理仟位
-        currValue = dic[subArr[0]] * 1000;
+        currValue = new Decimal(dic[subArr[0]]).mul(new Decimal(1000));
       } else {
         // 处理个位
-        currValue = dic[subArr[0]];
+        currValue = new Decimal(dic[subArr[0]]);
       }
-      itemCount += currValue;
+      itemCount = new Decimal(itemCount).add(new Decimal(currValue));
     }
     return itemCount;
   };
 
-  let totalMoney = 0;
+  let totalMoney = new Decimal(0);
 
   //// 按照亿,万,拆分成数组;'叁仟肆佰伍拾亿零壹佰陆拾柒万叁仟肆佰伍拾壹元捌角伍分' => ['叁仟肆佰伍拾亿', '壹佰陆拾柒万', '叁仟肆佰伍拾壹元', '捌角', '伍分']
   let newMoney = money
@@ -229,21 +231,25 @@ export const chineseToNum = (money) => {
 
     if (mainArr[mainArr.length - 1] === "亿") {
       mainArr.pop(); // 去掉亿单位
-      currMoney = getInfo(mainArr.join("")) * 100000000; // 求仟,佰,拾
+      currMoney = new Decimal(getInfo(mainArr.join(""))).mul(
+        new Decimal(100000000)
+      ); // 求仟,佰,拾
     } else if (mainArr[mainArr.length - 1] === "万") {
       mainArr.pop(); // 去掉万单位
-      currMoney = getInfo(mainArr.join("")) * 10000; // 求仟,佰,拾
+      currMoney = new Decimal(getInfo(mainArr.join(""))).mul(
+        new Decimal(10000)
+      ); // 求仟,佰,拾
     } else if (mainArr[mainArr.length - 1] === "元") {
       mainArr.pop(); // 去掉元
-      currMoney = getInfo(mainArr.join("")); // 求仟,佰,拾
+      currMoney = new Decimal(getInfo(mainArr.join(""))); // 求仟,佰,拾
     } else if (mainArr[mainArr.length - 1] === "角") {
       mainArr.pop(); // 去掉角
-      currMoney = dic[mainArr[0]] * 0.1;
+      currMoney = new Decimal(dic[mainArr[0]]).mul(new Decimal(0.1));
     } else if (mainArr[mainArr.length - 1] === "分") {
       mainArr.pop(); // 去掉分
-      currMoney = dic[mainArr[0]] * 0.01;
+      currMoney = new Decimal(dic[mainArr[0]]).mul(new Decimal(0.01));
     }
-    totalMoney += currMoney;
+    totalMoney = new Decimal(totalMoney).add(new Decimal(currMoney));
   }
 
   return totalMoney.toString();

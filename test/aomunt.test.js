@@ -56,6 +56,6 @@ describe("chineseToNum", ()=>{
     expect(chineseToNum('贰拾亿零壹仟万零伍佰壹拾元壹角贰分')).toBe('2010000510.12')
   })
   test("testChineseToNum7", () => {
-    expect(chineseToNum('伍角贰分')).toBe('0.52')
+    expect(chineseToNum('壹角肆分')).toBe('0.14')
   })
 })

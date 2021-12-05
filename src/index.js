@@ -8,6 +8,8 @@
  */
 export * from "./amount";
 export * from "./base";
+export * from "./date";
+export * from "./cache";
 
 /**
  * 2.正常导出模块
@@ -17,6 +19,8 @@ export * from "./base";
  * 使用:
  * Amount.formatterMoney()
  */
-export { Amount, Base };
 import * as Amount from "./amount";
 import * as Base from "./base";
+import * as Date from "./date";
+import * as Cache from "./cache";
+export { Amount, Base, Date, Cache };
