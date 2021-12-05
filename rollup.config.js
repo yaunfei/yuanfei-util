@@ -13,6 +13,12 @@ export default {
       format: "esm",
     },
   ],
+  onwarn: function (warning) {
+    if (warning.code === "THIS_IS_UNDEFINED") {
+      return;
+    }
+    console.error(warning.message);
+  },
   plugins: [
     moduleResolve({
       extensions: [".js", ".jsx", ".ts", ".tsx"],
