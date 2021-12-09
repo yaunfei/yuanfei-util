@@ -1,6 +1,6 @@
 {
   "name": "yuanfei-util",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Common method library of JS",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/yaunfei/yuanfei-util#readme",
   "dependencies": {
-    "decimal": "^0.0.2"
+    "decimal.js": "^10.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
